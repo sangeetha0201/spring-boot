@@ -10,6 +10,7 @@ pipeline {
             steps{
                 echo "welcome "
             }
+        }
             stage('print working directory'){
                 steps{
                     sh 'pwd'
