@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('maven built'){
-            steps{
+            steps {
                 sh 'mvn clean install package'
             }
         }
@@ -10,7 +10,10 @@ pipeline {
             steps{
                 echo "welcome "
             }
-
+            stage('compile'){
+                steps {
+                    sh 'pwd'                }
+            }
         }
     }
 }
