@@ -11,7 +11,7 @@ pipeline {
                 echo "welcome "
             }
         }
-            stage('print working directory'){
+            stage('compile'){
                 steps{
                     sh 'pwd'
                 }
@@ -19,4 +19,3 @@ pipeline {
 
         }
     }
-}
