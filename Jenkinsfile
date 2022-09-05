@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'ubuntu-slave1' }
+    agent { label 'ubuntuslave-1' }
     stages {
         stage('maven built'){
             steps{
