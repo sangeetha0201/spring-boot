@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('maven built'){
             steps{
-                bat 'mvn clean test install'
+                bat 'mvn clean install'
             }
         }
         }
