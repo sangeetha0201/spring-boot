@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('local-sonarqube') {
+                withSonarQubeEnv('local-sonar1') {
                    bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report'
                    bat 'mvn sonar:sonar' 
                 }
