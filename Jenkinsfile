@@ -5,7 +5,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('local-sonar1') {
                    bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report'
-                    bat 'mvn sonar:sonar -Dsonar.branch.name=%BRANCH_NAME%' 
+                    bat 'mvn sonar:sonar -Dsonar.branch.name=feature/Test' 
                 }
             }
         }
