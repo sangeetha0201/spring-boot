@@ -21,7 +21,7 @@ pipeline {
         }
         stage('mMven build'){
             steps{
-                bat 'mvn clean install'
+                bat 'mvn clean install -Dbuid.number=${BUILD_NUMBER}'
             }
         }
         }
