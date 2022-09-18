@@ -4,8 +4,8 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('local-sonar1') {
-                   bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report'
-                   bat 'mvn sonar:sonar' 
+                   sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report'
+                   sh 'mvn sonar:sonar' 
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('mMven build'){
             steps{
-                bat 'mvn clean install -Dbuid.number=%BUILD_NUMBER%'
+                sh 'mvn clean install -Dbuid.number=%BUILD_NUMBER%'
             }
         }
         }
