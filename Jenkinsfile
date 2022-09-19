@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
         stage('SonarQube analysis') {
+            when { allOf { environment name: 'OS-Type', value: 'windows'} }
             steps {
                 withSonarQubeEnv('local-sonar1') {
                    bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report'
@@ -10,6 +11,7 @@ pipeline {
             }
         }
         stage("Quality Gate") {
+            when { allOf { environment name: 'OS-Type', value: 'windows'} }
             steps {
                 sleep(60)
                 timeout(time: 5, unit: 'MINUTES') {
@@ -19,9 +21,16 @@ pipeline {
                 }
             }
         }
-        stage('mMven build'){
+        stage('maven  windows build'){
+            when { allOf { environment name: 'OS-Type', value: 'windows'} }
             steps{
                 bat 'mvn clean install -Dbuid.number=%BUILD_NUMBER%'
+            }
+        }
+        stage('maven  linux build'){
+            when { allOf { environment name: 'OS-Type', value: 'linux'} }
+            steps{
+                sh 'mvn clean install -Dbuid.number=%BUILD_NUMBER%'
             }
         }
         }
